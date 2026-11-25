@@ -4,7 +4,8 @@ export const STORE_URL = 'https://craiggilmore.square.site';
 
 // Brevo form for Ethereal release updates: the <form action="…sibforms.com/serve/…">
 // URL from the form's HTML embed code in Brevo (Marketing → Forms). The form must
-// use EMAIL and FIRSTNAME fields (both required), have CAPTCHA off, and redirect to /ethereal/thanks/.
+// use EMAIL and FIRSTNAME fields (both required) and have CAPTCHA off. The Ethereal page submits it
+// in the background and then shows /ethereal/thanks/; the redirect set in Brevo is only a no-JavaScript fallback.
 // If this is empty the Ethereal page shows an email button instead.
 export const BREVO_FORM_URL =
   'https://a4645cb3.sibforms.com/serve/MUIFAHV6a-AvgpcznjEUNPECcaLYfJKyio_Ipc87UjrFym6WWswvrM3FkiRSOGtwbQNCQY0LgoIyOd80Zywd_GxgoAP_Sx0KzYhkXCyxrvx_QpPYPJIEkiY9ALg3I-87gkuE5UE52WgWhiTMWPbjipl6ZXoeCCXuNEPWCMwW5NGuYNYVl5_6NSal2gASg1Ahk0PMigRp80LY9AV5';

@@ -56,6 +56,7 @@ const images = project?.data.images ?? [];
               <input class="signup-hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <input type="hidden" name="locale" value="en" />
               <button type="submit" class="btn btn-primary">Get Notified of Release</button>
+              <p class="signup-error" role="alert" hidden></p>
               <p class="signup-note">You'll get an email to confirm. No spam, and you can unsubscribe any time.</p>
             </form>
           ) : (
@@ -88,6 +89,48 @@ const images = project?.data.images ?? [];
 
   <Lightbox />
 </BaseLayout>
+
+<script>
+  // Submit the Brevo form in the background, then show our own thank-you page on this
+  // domain. Without JavaScript, or if the request can't be made, the form posts straight
+  // to Brevo instead and Brevo shows its own confirmation.
+  const form = document.querySelector<HTMLFormElement>('.signup-form');
+  if (form) {
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const error = form.querySelector<HTMLElement>('.signup-error')!;
+    const label = button.textContent;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      button.disabled = true;
+      button.textContent = 'Signing you up…';
+
+      const url = new URL(form.action);
+      url.searchParams.set('isAjax', '1');
+
+      let result: { success?: boolean; message?: unknown; errors?: Record<string, unknown> };
+      try {
+        const response = await fetch(url, { method: 'POST', body: new FormData(form) });
+        result = await response.json();
+      } catch {
+        form.submit();
+        return;
+      }
+
+      if (result.success) {
+        window.location.assign('/ethereal/thanks/');
+        return;
+      }
+
+      const detail = [result.message, ...Object.values(result.errors ?? {})].find((m) => typeof m === 'string');
+      error.textContent = typeof detail === 'string' ? detail : "Sorry, that didn't go through. Please check your details and try again.";
+      error.hidden = false;
+      button.disabled = false;
+      button.textContent = label;
+    });
+  }
+</script>
 
 <style is:global>
   .ethereal-page-intro { border-bottom: 1px solid var(--border); }
@@ -135,6 +178,7 @@ const images = project?.data.images ?? [];
   }
   .signup-field input:focus { outline: none; border-color: var(--accent); }
   .signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .signup-error { margin-top: 0.875rem; font-size: 0.875rem; color: var(--accent-hi); }
   .signup-note { margin-top: 0.875rem; font-size: 0.8125rem; color: var(--text-muted); }
   @media (max-width: 560px) {
     .signup-fields { grid-template-columns: 1fr; }
