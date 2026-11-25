@@ -4,7 +4,6 @@ Open work for the Craig Gilmore site. See [CURRENT-STATE.md](CURRENT-STATE.md) f
 
 ## Launch
 
-- [ ] **Confirm the Cloudflare setup.** Check the `craig-gilmore-v2` Worker's production branch is `main` and that the latest deploy succeeded.
 - [ ] **Point the domain at Cloudflare.** Move www.craiggilmore.net from WordPress to the Worker. Spot-check a few old WordPress URLs afterwards to confirm the redirects in `public/_redirects` work.
 
 ## Content from Craig
@@ -32,3 +31,4 @@ Make no changes to the live site without asking.
 - [x] Polish the design: Anton headings, hero slideshow, floating header, larger logo, artwork banners, thumbnails, lightbox and accessibility.
 - [x] Connect the Ethereal signup form to Brevo.
 - [x] Restore 12 storyboard images that were lost to file-name case clashes.
+- [x] Confirm the Cloudflare setup (2026-11-24): the `craig-gilmore-v2` Worker builds from `main` of `macktropolis/craig-gilmore-v2`, every recent `main` push has a matching deploy, and the test domain serves the latest commit.
