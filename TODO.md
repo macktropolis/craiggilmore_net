@@ -31,4 +31,4 @@ Make no changes to the live site without asking.
 - [x] Polish the design: Anton headings, hero slideshow, floating header, larger logo, artwork banners, thumbnails, lightbox and accessibility.
 - [x] Connect the Ethereal signup form to Brevo.
 - [x] Restore 12 storyboard images that were lost to file-name case clashes.
-- [x] Confirm the Cloudflare setup (2026-11-24): the `craig-gilmore-v2` Worker builds from `main` of `macktropolis/craig-gilmore-v2`, every recent `main` push has a matching deploy, and the test domain serves the latest commit.
+- [x] Confirm the Cloudflare setup (2026-11-24): the `craig-gilmore-v2` Worker builds from `main` of `macktropolis/craiggilmore_net`, every recent `main` push has a matching deploy, and the test domain serves the latest commit.

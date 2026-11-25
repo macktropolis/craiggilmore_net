@@ -1,6 +1,6 @@
 # Current State
 
-Last updated: 2026-11-19
+Last updated: 2026-11-24
 
 Craig Gilmore's portfolio site (comic book creator, storyboard artist and illustrator) is being moved off WordPress, which is still live at https://www.craiggilmore.net. The replacement is a static Astro site hosted on Cloudflare Workers.
 
@@ -8,7 +8,7 @@ The rebuild and a full design pass are finished and merged to `main`. Open work 
 
 ## Where things live
 
-- **GitHub:** `macktropolis/craig-gilmore-v2`. Work happens on `main`.
+- **GitHub:** `macktropolis/craiggilmore_net` (renamed from `craig-gilmore-v2`; the old name redirects). Work happens on `main`.
 - **Local working copy:** `~/Developer/craiggilmore_net`. Use this one for day-to-day work.
 - **Node:** Astro needs Node 22.23.4 or newer. `.node-version` pins 22.
 
